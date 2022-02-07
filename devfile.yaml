@@ -34,7 +34,7 @@ commands:
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}/golang-health-check'
         type: exec
-        command: if [ -f tools.go ]; then go install -v $(go list -f '{{join .Imports " "}}' tools.go; fi
+        command: if [ -f tools.go ]; then go install -v $(go list -f '{{join .Imports " "}}' tools.go); fi
         component: go-cli
   - name: 1. Build the application
     actions:
