@@ -4,7 +4,7 @@ metadata:
 projects:
   - name: golang-health-check
     source:
-      location: 'https://github.com/nmasse-itix/test-crw.git'
+      location: 'https://github.com/nmasse-itix/crw-sample-app.git'
       type: git
       branch: master
 components:
@@ -46,7 +46,7 @@ commands:
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}/golang-health-check'
         type: exec
-        command: oc process -f .openshiftio/application.yaml -p SOURCE_REPOSITORY_URL=https://github.com/nmasse-itix/test-crw.git | oc apply -f -
+        command: oc process -f .openshiftio/application.yaml -p SOURCE_REPOSITORY_URL=https://github.com/nmasse-itix/crw-sample-app.git | oc apply -f -
         component: go-cli
   - name: Debug configuration
     actions:
