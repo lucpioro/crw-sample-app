@@ -1,3 +1,5 @@
+//go:generate go-bindata-assetfs public
+
 package main
 
 import (
