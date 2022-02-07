@@ -30,6 +30,12 @@ components:
       - value: /tmp/.cache
         name: GOCACHE
 commands:
+  - name: 0. Install pre-requisites
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/golang-health-check'
+        type: exec
+        command: if [ -f tools.go ]; then go install -v $(go list -f '{{join .Imports " "}}' tools.go; fi
+        component: go-cli
   - name: 1. Build the application
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}/golang-health-check'
