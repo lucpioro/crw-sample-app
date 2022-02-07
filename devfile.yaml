@@ -25,6 +25,8 @@ components:
     env:
       - value: '/projects/.che/gopath:$(CHE_PROJECTS_ROOT)'
         name: GOPATH
+      - value: '/projects/.che/gopath/bin:$(CHE_PROJECTS_ROOT)/bin:/home/jboss/.local/bin:/home/jboss/bin:/usr/share/Modules/bin:/usr/bin:/usr/bin:/home/jboss/go/bin:/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+        name: PATH
       - value: /tmp/.cache
         name: GOCACHE
 commands:
