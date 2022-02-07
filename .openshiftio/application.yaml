@@ -32,6 +32,21 @@ objects:
         version: '${RELEASE_VERSION}'
         app: golang-health-check
     spec: {}
+  - apiVersion: image.openshift.io/v1
+    kind: ImageStream
+    metadata:
+      name: golang
+    spec:
+      lookupPolicy:
+        local: false
+      tags:
+      - from:
+          kind: DockerImage
+          name: docker.io/library/golang:1.17-alpine
+        importPolicy: {}
+        name: 1.17-alpine
+        referencePolicy:
+          type: Source
   - apiVersion: v1
     kind: BuildConfig
     metadata:
@@ -53,11 +68,15 @@ objects:
         type: Git
       strategy:
         type: Source
-        sourceStrategy:
+        dockerStrategy:
+          buildArgs:
+          - name: GIT_REPO
+            value: '${SOURCE_REPOSITORY_URL}'
+          - name: GIT_BRANCH
+            value: '${SOURCE_REPOSITORY_REF}'
           from:
-            kind: DockerImage
-            name: 'registry.fedoraproject.org/f29/golang'
-          incremental: true
+            kind: "ImageStreamTag"
+            name: "golang:1.17-alpine"
     status:
       lastVersion: 0
   - apiVersion: v1
