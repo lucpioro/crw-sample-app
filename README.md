@@ -1,4 +1,8 @@
-# Golang Health Check
+# Golang test project
+
+[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://codeready-openshift-workspaces.apps.dev.itix.xyz/f?url=https://github.com/nmasse-itix/test-crw)
+
+
 A booster demonstrating health checks and recovery using the kubernetes/openshift
 `liveliness` and `readiness` probes.
 
