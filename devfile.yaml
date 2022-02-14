@@ -48,6 +48,12 @@ commands:
         type: exec
         command: oc process -f .openshiftio/application.yaml -p SOURCE_REPOSITORY_URL=https://github.com/nmasse-itix/crw-sample-app.git | oc apply -f -
         component: go-cli
+  - name: 4. Delete in OpenShift
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}/golang-health-check'
+        type: exec
+        command: oc process -f .openshiftio/application.yaml -p SOURCE_REPOSITORY_URL=https://github.com/nmasse-itix/crw-sample-app.git | oc delete -f -
+        component: go-cli
   - name: Debug configuration
     actions:
       - referenceContent: |
